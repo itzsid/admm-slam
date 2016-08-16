@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ADMM-SLAM by itzsid</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ADMM-SLAM</h1>
+        <p>Exactly Sparse Memory Efficient SLAM using the Multi-Block Alternating Direction Method of Multipliers (IROS 2015). </p>
+
+        <p class="view"><a href="https://github.com/itzsid/admm-slam">View the Project on GitHub <small>itzsid/admm-slam</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/itzsid/admm-slam/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/itzsid/admm-slam/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/itzsid/admm-slam">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="admm-slam" class="anchor" href="#admm-slam" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ADMM-SLAM</h1>
+
+<p>This library is an implementation of the algorithm described in Exactly Sparse Memory Efficient SLAM using the 
+Multi-Block Alternating Direction Method of Multipliers (IROS 2015). The core library is developed in C++
+language.</p>
+
+<p>ADMM-SLAM is developed by <a href="mailto:siddharth.choudhary@gatech.edu">Siddharth Choudhary</a> and 
+<a href="mailto:lcarlone@mit.edu">Luca Carlone</a> as part of their work at Georgia Tech. </p>
+
+<h2>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites</h2>
+
+<ul>
+<li>CMake (Ubuntu: <code>sudo apt-get install cmake</code>), compilation configuration tool.</li>
+<li>
+<a href="http://www.boost.org/">Boost</a>  (Ubuntu: <code>sudo apt-get install libboost-all-dev</code>), portable C++ source libraries.</li>
+<li>
+<a href="https://bitbucket.org/gtborg/gtsam">GTSAM</a> &gt;= 3.0, a C++ library that implement smoothing and mapping (SAM) framework in robotics and vision.
+Here we use factor graph implementations and inference/optimization tools provided by GTSAM.</li>
+</ul>
+
+<h2>
+<a id="compilation--installation" class="anchor" href="#compilation--installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compilation &amp; Installation</h2>
+
+<p>In the cpp folder excute:</p>
+
+<pre><code>$ mkdir build
+$ cd build
+$ cmake ..
+$ make -j3
+$ make check  # optonal, run unit tests
+</code></pre>
+
+<h2>
+<a id="run-experiments" class="anchor" href="#run-experiments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Experiments</h2>
+
+<pre><code>$ cd scripts
+$ bash runADMMOnSyntheticData.sh 
+$ bash runADMMOnBenchmarkData.sh 
+</code></pre>
+
+<h2>
+<a id="questions--bug-reporting" class="anchor" href="#questions--bug-reporting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Questions &amp; Bug reporting</h2>
+
+<p>Please use Github issue tracker to report bugs. For other questions please contact <a href="mailto:siddharth.choudhary@gatech.edu">Siddharth Choudhary</a> and
+<a href="mailto:lcarlone@mit.edu">Luca Carlone</a>.</p>
+
+<h2>
+<a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgements</h2>
+
+<p>We wish to thank Gian Diego Tipaldi and Benjamin Suger
+for sharing the datasets ETHCampus and AIS2Klinik, and for
+authorizing the use of the data in Table I. We
+gratefully acknowledge reviewers for the helpful comments.
+This work was partially funded by the ARL MAST CTA
+Project 1436607 “Autonomous Multifunctional Mobile Microsystems”
+and by the National Science Foundation Award
+11115678 “RI: Small: Ultra-Sparsifiers for Fast and Scalable
+Mapping and 3D Reconstruction on Mobile Robots”.</p>
+
+<h2>
+<a id="citing" class="anchor" href="#citing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Citing</h2>
+
+<p>If you use this work, please cite following publication:</p>
+
+<pre><code>@inproceedings{Choudhary15iros,
+  author    = {Siddharth Choudhary and
+               Luca Carlone and
+               Henrik I. Christensen and
+               Frank Dellaert},
+  title     = {Exactly Sparse Memory Efficient SLAM using the Multi-Block Alternating Direction Method of Multipliers},
+  booktitle = {2015 {IEEE/RSJ} International Conference on Intelligent Robots and Systems, Hamburg, Germany},
+  year      = {2015}
+}
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>ADMM-SLAM is released under the BSD license, reproduced in the file LICENSE in this directory.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/itzsid">itzsid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
