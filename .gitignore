@@ -1,0 +1,15 @@
+*.out
+*.log
+*.fdb_latexmk
+*.aux
+*.synctex.gz
+/results/
+scripts/results/
+scripts/results_blocks_world/
+*.backup
+*~
+*.user
+*.dvi
+*.ps
+*.swp
+

@@ -21,9 +21,8 @@ ENV WS=/root/ws
 ENV GTSAM_VERSION 3.2.1
 RUN mkdir -p $WS/gtsam
 WORKDIR $WS
-RUN wget https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/gtsam-${GTSAM_VERSION}.tgz && \
-    tar -xvzf gtsam-${GTSAM_VERSION}.tgz --strip=1 -C gtsam/ && \
-    rm gtsam-${GTSAM_VERSION}.tgz
+RUN git clone https://bitbucket.org/gtborg/gtsam \
+    git checkout b7c695fa71efd43b40972eec154df265617fc07d -b admm
 
 # build and install gtsam
 RUN mkdir -p $WS/gtsam/build
