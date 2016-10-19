@@ -23,7 +23,7 @@ ADMM::logResult(int iter, double p_res, double d_res, double time_taken){
   // Pack results into a single Value structure
   Values intermediateResult;
   for(size_t i=0; i<subinitials_.size(); i++){
-    BOOST_FOREACH (const Values::ConstKeyValuePair &keyValue, subinitials_[i]){
+    for (const Values::ConstKeyValuePair &keyValue: subinitials_[i]){
       if(!intermediateResult.exists(keyValue.key))
         intermediateResult.insert(keyValue.key, keyValue.value);
     }

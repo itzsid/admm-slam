@@ -3,7 +3,6 @@
 #include <gtsam/3rdparty/metis/metis.h>
 #include <gtsam/inference/MetisIndex.h>
 #include <gtsam/slam/PriorFactor.h>
-#include <gtsam/slam/BetweenFactor.h>
 #include <gtsam/nonlinear/GaussNewtonOptimizer.h>
 #include <gtsam/nonlinear/LevenbergMarquardtOptimizer.h>
 
@@ -14,13 +13,13 @@ std::map<int, int> metis(gtsam::NonlinearFactorGraph graph, int num_subgraphs){
 
   // Instantiate structure for metis
   gtsam::MetisIndex met(graph);
-  std::vector<idx_t> xadj = met.xadj();
-  std::vector<idx_t> adj = met.adj();
-  std::vector<idx_t> objval, part;
+  std::vector<int32_t> xadj = met.xadj();
+  std::vector<int32_t> adj = met.adj();
+  std::vector<int32_t> objval, part;
   std::map<int, int> partitioning; // Partitioning output
-  idx_t nrNodes = met.nValues(); // number of vertices
-  idx_t num_balancing_constraints = 1;
-  for (idx_t i = 0; i < nrNodes; i++){
+  int32_t nrNodes = met.nValues(); // number of vertices
+  int32_t num_balancing_constraints = 1;
+  for (int32_t i = 0; i < nrNodes; i++){
     objval.push_back(0);
     part.push_back(0);
   }
@@ -28,7 +27,7 @@ std::map<int, int> metis(gtsam::NonlinearFactorGraph graph, int num_subgraphs){
   std::cout << "Partitioning..." << std::endl;
   // Call partitioning
 
-  idx_t options[METIS_NOPTIONS];
+  int32_t options[METIS_NOPTIONS];
   METIS_SetDefaultOptions(options);
   options[METIS_OPTION_CONTIG] = 1; // Ensures that partitions are contiguous
   options[METIS_OPTION_MINCONN] = 1;
@@ -254,7 +253,7 @@ std::vector<int>
 createSeparators(std::vector<gtsam::Values> sub_initials, gtsam::Values initial){
   size_t num_subgraphs = sub_initials.size();
   std::vector<int> separators;
-  BOOST_FOREACH (const gtsam::Values::ConstKeyValuePair &keyValue, initial ){
+  for (const gtsam::Values::ConstKeyValuePair &keyValue: initial ){
     gtsam::Key key = keyValue.key;
     size_t keyCounter = 0; // counts how many pairs of subgraphs the node separates
     for(size_t i = 0; i < num_subgraphs; i++){
@@ -291,7 +290,7 @@ void logResults(std::vector<gtsam::NonlinearFactorGraph> sub_graphs,
   // Pack ADMM results into a single Value structure, to check centralized error
   gtsam::Values ADMMresult;
   for(size_t i=0; i<sub_results.size(); i++){
-    BOOST_FOREACH (const gtsam::Values::ConstKeyValuePair &keyValue, sub_results[i]){
+    for (const gtsam::Values::ConstKeyValuePair &keyValue: sub_results[i]){
       if(!ADMMresult.exists(keyValue.key))
         ADMMresult.insert(keyValue.key, keyValue.value);
     }
