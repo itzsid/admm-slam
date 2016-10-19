@@ -12,14 +12,16 @@ Prerequisites
 
 - CMake (Ubuntu: `sudo apt-get install cmake`), compilation configuration tool.
 - [Boost](http://www.boost.org/)  (Ubuntu: `sudo apt-get install libboost-all-dev`), portable C++ source libraries.
-- [GTSAM](https://bitbucket.org/gtborg/gtsam) develop branch, a C++ library that implement smoothing and mapping (SAM) framework in robotics and vision.
-Here we use factor graph implementations and inference/optimization tools provided by GTSAM.
+- [GTSAM](https://bitbucket.org/gtborg/gtsam) develop branch, a C++ library that implement smoothing and mapping (SAM) framework in robotics and vision. Here we use factor graph implementations and inference/optimization tools provided by GTSAM. To install a particular commit of GTSAM follow the following instructions: 
+
+```
 $ git clone https://bitbucket.org/gtborg/gtsam
 $ git checkout b7c695fa71efd43b40972eec154df265617fc07d -b admm
 $ mkdir build
 $ cmake ..
 $ make -j8
 $ sudo make install
+```
 
 Compilation & Installation
 ------
