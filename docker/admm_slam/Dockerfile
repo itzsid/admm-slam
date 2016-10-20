@@ -4,17 +4,17 @@ FROM ubuntu:14.04
 #   and dev tools
 RUN apt-get update && \
     apt-get install -y \
-      git \
+      build-essential \
       cmake \
+      git \
       libboost-all-dev
 
 ENV WS=/root/ws
 
-# download and unzip gtsam
-ENV GTSAM_VERSION 3.2.1
-RUN mkdir -p $WS/gtsam
+# clone gtsam
 WORKDIR $WS
 RUN git clone https://bitbucket.org/gtborg/gtsam.git && \
+    cd gtsam && \
     git checkout b7c695fa71efd43b40972eec154df265617fc07d -b admm
 
 # build and install gtsam
